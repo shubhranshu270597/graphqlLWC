@@ -1,0 +1,54 @@
+<!--
+  @description       : 
+  @author            : shubhranshu
+  @group             : 
+  @last modified on  : 08-31-2024
+  @last modified by  : shubhranshu
+-->
+<template>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_6-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12">
+            <div class="slds-var-m-horizontal_medium">
+                <template if:true={TypePicklistValues.data}>
+                    <lightning-combobox name="acttype"
+                                        label="Account Type"
+                                        value={value}
+                                        placeholder="-Select-"
+                                        options={TypePicklistValues.data.values}
+                                        onchange={handleTypeChange} >
+                    </lightning-combobox>
+                </template><br/>
+            </div>
+        </div>
+        <div class="slds-col slds-size--6-of-12 slds-small-size--6-of-12 slds-medium-size--4-of-12">
+            
+        </div>
+        <div class="slds-col slds-size--6-of-12 slds-small-size--6-of-12 slds-medium-size--4-of-12">
+            
+        </div>
+    </div>
+    <hr />
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_6-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12">
+            <div class="slds-var-m-horizontal_medium">
+                <template lwc:if={records}>
+                    <template for:each={records} for:item="cases">
+                    <div class="card-spacer" key={cases.Id}>
+                        <lightning-card icon-name="standard:case">
+                            <h1 slot="title">{cases.CaseNumber.value}</h1>
+                            <lightning-formatted-text class="slds-var-p-left_medium"  value={cases.Status.displayValue}></lightning-formatted-text>
+                            <br/>
+                            <lightning-formatted-text class="slds-var-p-left_medium" value={cases.Account_Type__c.value} ></lightning-formatted-text>                
+                        </lightning-card>
+                    </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+        <div class="slds-col slds-size_6-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12">
+        </div>
+        <div class="slds-col slds-size_6-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12">
+        </div>
+    </div>
+    
+</template>
